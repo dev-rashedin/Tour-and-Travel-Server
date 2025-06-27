@@ -3,7 +3,7 @@ import { StatusCodes } from '../constants/httpStatus';
 
 
 
-const notFound = (req: Request, res: Response, ) => {
+const notFoundMiddleware = (req: Request, res: Response, ) => {
   res
     .status(StatusCodes.NOT_FOUND)
     .json({
@@ -13,4 +13,4 @@ const notFound = (req: Request, res: Response, ) => {
     });
 }
 
-export default notFound;
+export default notFoundMiddleware;
