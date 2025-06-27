@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import app from './app';
-import { mongodb_uri, port } from './Config';
+import { mongodb_uri, port } from './config';
 
 console.log(`Connecting to MongoDB at ${mongodb_uri}`);
 

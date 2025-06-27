@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config({ path: '../config' });
+dotenv.config(  );
 
 console.log(dotenv.config());
 
