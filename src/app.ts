@@ -11,15 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.get('/', (req: Request, res:Response) => {
-  res.json({
-    message: 'Welcome to the Travel and Tour Server',
-    status: 'success',
-    data: {
-      name: 'API',
-      version: '1.0.0',
-      description: 'This is a sample API built with Express.js'
-    }
-  })
+  res.send('<h1 style="min-height: 100vh; display: flex; justify-content: center; align-items: center">Welcome to the Tour and Travel Server</h1>');
 });
 
 
