@@ -1,10 +1,11 @@
+import { StatusCodes } from "../constants/httpStatus";
 
 class CustomAPIError extends Error {
 
   public statusCode: number;
   public details: string | null;
 
-  constructor(message: string, statusCode: number = 500, details: string | null = null) {
+  constructor(message: string, statusCode: number = StatusCodes.UNAUTHORIZED, details: string | null = null) {
     super(message);
     this.statusCode = statusCode;
     this.details = details;
