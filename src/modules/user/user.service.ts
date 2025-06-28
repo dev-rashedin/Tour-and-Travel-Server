@@ -45,7 +45,7 @@ export const UpdateUserInDB = async (userId: string, userData: TUser): Promise<T
   const result = await User.findByIdAndUpdate(userId, userData, {new: true, runValidators: true});
 
   if (!result) {
-    throw new NotFoundError(`User with ID ${userId} failed to update`);
+    throw new NotFoundError(`User with ID ${userId} not found`);
   }
  
   return result;
@@ -59,7 +59,7 @@ export const deleteUserFromDB = async (userId: string): Promise<unknown> => {
   const result = await User.findByIdAndDelete(userId);
 
   if (!result) {
-    throw new NotFoundError(`User with ID ${userId} failed to delete`);
+    throw new NotFoundError(`User with ID ${userId} not found`);
   }
 
   return result;
