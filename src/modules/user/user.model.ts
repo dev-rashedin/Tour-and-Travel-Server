@@ -49,9 +49,21 @@ photo: String, // Optional field, can be null
   },
 });
 
-// post hook to get user name 
-userSchema.post('save', function (doc) { 
+// pre middleware 
+// userSchema.pre('find', function (next) { 
+//   this.find({userStatus: 'inactive'})
+// //  this.find({userStatus: {$eq: 'active'}})
+//   next()
+// }) 
 
+// post middleware
+userSchema.post('find', function (docs, next) {
+  docs.forEach((doc : TUser) => {
+    // doc.name = doc.name.toUpperCase()
+   doc.name = doc.name.split(' ')[0]
+})
+  next();
+  
 })
 
 const User = model<TUser, UserModel>('User', userSchema)
