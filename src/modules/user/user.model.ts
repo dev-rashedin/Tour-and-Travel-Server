@@ -2,12 +2,11 @@ import { Model, Schema } from "mongoose";
 import { TUser } from "./user.interface";
 
 const userSchema = new Schema({
-id: {
+  name: {
     type: String,
     required: true,
-    unique: true,
   },
-  name: {
+  age: {
     type: String,
     required: true,
   },
@@ -16,10 +15,7 @@ id: {
     required: true,
     unique: true,
   },
-  age: {
-    type: String,
-    required: true,
-  },
+photo: String,
   password: {
     type: String,
     required: true,
@@ -28,9 +24,15 @@ id: {
     type: String,
     required: true,
   },
-})
+  userStatus: {
+    type: String,
+    required: true,
+    enum: ["active", "inactive", "banned"],
+    default: "active",
+  },
+});
 
 
-const user = Model<TUser>('User', userSchema);
+const User = Model<TUser>('User', userSchema);
 
-export default user;
+export default User;
