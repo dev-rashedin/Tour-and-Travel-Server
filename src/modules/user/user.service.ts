@@ -33,3 +33,32 @@ export const fetchSingleUserFromDB = async (userId: string): Promise<TUser> => {
 
   return result;
 }
+
+
+export const UpdateUserInDB = async (userId: string, userData: TUser): Promise<TUser> => {
+  if (!userId || !userData) {
+    throw new NotFoundError('User id and user data  is required to update a user');
+  }
+
+  const result = await User.findByIdAndUpdate(userId, userData, {new: true, runValidators: true});
+
+  if (!result) {
+    throw new NotFoundError(`User with ID ${userId} failed to update`);
+  }
+ 
+  return result;
+};
+
+export const deleteUserFromDB = async (userId: string): Promise<unknown> => {
+  if (!userId) {
+    throw new NotFoundError('User ID is required to delete a user');
+  }
+
+  const result = await User.findByIdAndDelete(userId);
+
+  if (!result) {
+    throw new NotFoundError(`User with ID ${userId} failed to delete`);
+  }
+
+  return result;
+}
