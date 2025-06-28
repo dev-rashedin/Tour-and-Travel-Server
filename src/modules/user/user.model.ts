@@ -1,5 +1,5 @@
-import { Model, Schema } from "mongoose";
-import { TUser } from "./user.interface";
+import { model, Schema } from "mongoose";
+import { TUser, UserModel } from "./user.interface";
 
 const userSchema = new Schema({
   name: {
@@ -33,6 +33,6 @@ photo: String,
 });
 
 
-const User = Model<TUser>('User', userSchema);
+const User = model<TUser, UserModel>('User', userSchema)
 
 export default User;

@@ -3,7 +3,7 @@ import CustomAPIError from "./custom-api";
 
 
 class BadRequestError extends CustomAPIError {
-  constructor(message: string, details: string | null = null) {
+  constructor(message: string, details: string | object | null = null) {
     super(message, StatusCodes.BAD_REQUEST, details);
   }
 }
