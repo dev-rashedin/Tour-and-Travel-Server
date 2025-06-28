@@ -11,6 +11,7 @@ const errorHandlerMiddleware = (err: CustomError, req: Request, res: Response, n
   let status = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   let message = err.message || "Something went wrong, please try again later.";
 
+  const notFound = StatusCodes.NOT_FOUND
 
   const errorResponse: { success: boolean; error: string; details?: string | null} = {
     success: false,

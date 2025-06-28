@@ -8,3 +8,10 @@ const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => P
 }
 
 export default asyncHandler;
+
+
+const asyncHandler2 = (fn: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Promise.resolve(fn(req, res, next)).catch(next)
+  }
+}

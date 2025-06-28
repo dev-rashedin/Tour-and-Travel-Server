@@ -17,7 +17,7 @@ app.get('/', (req: Request, res: Response) => {
 
   // // This will be caught by the error handler middleware
   // throw new CustomAPIError('This is a custom error', 500, 'hi error');
-
+ 
   res.send(
     '<h1 style="min-height: 100vh; display: flex; justify-content: center; align-items: center">Welcome to the Tour and Travel Server</h1>',
   );
