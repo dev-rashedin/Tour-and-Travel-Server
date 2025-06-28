@@ -1,4 +1,4 @@
-import { NotFoundError } from "../../error";
+import { BadRequestError, NotFoundError } from "../../error";
 import { TUser } from "./user.interface";
 import User from "./user.model"
 
@@ -13,7 +13,7 @@ export const fetchAllUsersFromDB = async (): Promise<TUser[]> => {
 
 export const storeUserInDB = async (userData : TUser): Promise<TUser>  => {
   if (!userData) { 
-    throw new NotFoundError("User data is required to create a user");
+    throw new BadRequestError("User data is required to create a user");
   }
   const result = await User.create(userData);
   return result;
@@ -22,7 +22,7 @@ export const storeUserInDB = async (userData : TUser): Promise<TUser>  => {
 
 export const fetchSingleUserFromDB = async (userId: string): Promise<TUser> => { 
   if (!userId) {
-    throw new NotFoundError("User ID is required to fetch a user");
+    throw new BadRequestError('User ID is required to fetch a user');
   }
 
   const result = await User.findById(userId);
@@ -37,7 +37,9 @@ export const fetchSingleUserFromDB = async (userId: string): Promise<TUser> => {
 
 export const UpdateUserInDB = async (userId: string, userData: TUser): Promise<TUser> => {
   if (!userId || !userData) {
-    throw new NotFoundError('User id and user data  is required to update a user');
+    throw new BadRequestError(
+      'User id and user data  is required to update a user',
+    );
   }
 
   const result = await User.findByIdAndUpdate(userId, userData, {new: true, runValidators: true});
@@ -51,7 +53,7 @@ export const UpdateUserInDB = async (userId: string, userData: TUser): Promise<T
 
 export const deleteUserFromDB = async (userId: string): Promise<unknown> => {
   if (!userId) {
-    throw new NotFoundError('User ID is required to delete a user');
+    throw new BadRequestError('User ID is required to delete a user');
   }
 
   const result = await User.findByIdAndDelete(userId);
