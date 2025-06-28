@@ -3,7 +3,7 @@ import { Model } from "mongoose";
 
 export type TUser = {
   name: string;
-  age: string;
+  age: number;
   email: string;
   photo: string
   password: string;
