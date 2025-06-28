@@ -5,10 +5,10 @@ export type TUser = {
   name: string;
   age: number;
   email: string;
-  photo: string
+  photo?: string | null;
   password: string;
-  role: string;
-  userStatus: string;
+  role: "user" | "admin";
+  userStatus: "active" | "inactive" | "banned";
 }
 
 export interface UserModel extends Model<TUser> { }

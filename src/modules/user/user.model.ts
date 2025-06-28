@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import { TUser, UserModel } from "./user.interface";
 
-const userSchema = new Schema({
+const userSchema = new Schema<TUser>({
   name: {
     type: String,
     required: [true, 'Name is required'],
@@ -24,7 +24,7 @@ const userSchema = new Schema({
       message: (props: {value: string}) => `${props.value} is not a valid email address!`
     }
   },
-photo: String,
+photo: String, // Optional field, can be null
   password: {
     type: String,
     required: [true, 'Password is required'],
@@ -35,6 +35,7 @@ photo: String,
       values: ["user", "admin"],
       message: '{VALUE} is not a valid role. Please provide either "user" or "admin".',
     },
+    default: "user",
     required: [true, 'Role is required'],
   },
   userStatus: {
@@ -47,6 +48,11 @@ photo: String,
     default: "active",
   },
 });
+
+// post hook to get user name 
+userSchema.post('save', function (doc) { 
+
+})
 
 const User = model<TUser, UserModel>('User', userSchema)
 
