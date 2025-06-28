@@ -10,5 +10,3 @@ export type TUser = {
   role: "user" | "admin";
   userStatus: "active" | "inactive" | "banned";
 }
-
-export interface UserModel extends Model<TUser> { }

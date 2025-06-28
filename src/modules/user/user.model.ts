@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { TUser, UserModel } from "./user.interface";
+import { TUser } from "./user.interface";
 
 const userSchema = new Schema<TUser>({
   name: {
@@ -66,6 +66,6 @@ userSchema.post('find', function (docs, next) {
   
 })
 
-const User = model<TUser, UserModel>('User', userSchema)
+const User = model<TUser>('User', userSchema)
 
 export default User;
