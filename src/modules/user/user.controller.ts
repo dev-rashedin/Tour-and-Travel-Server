@@ -2,13 +2,14 @@ import { Request, Response } from "express";
 import asyncHandler from "../../utils/asyncHandler";
 import { StatusCodes } from "../../constants/httpStatus";
 import User from "./user.model";
+import { storeUserInDB } from "./user.service";
 
 
 export const createUser = asyncHandler(async (req: Request, res: Response) => {
   // Logic to create a user
   const userData = req.body;
 
-  const result = await User.create(userData);
+  const result = await storeUserInDB(userData);
 
   res.status(StatusCodes.CREATED).json({
     success: true,
