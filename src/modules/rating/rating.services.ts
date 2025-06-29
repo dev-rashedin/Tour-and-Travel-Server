@@ -3,13 +3,14 @@ import { TRating } from './rating.interface';
 import Rating from './rating.model';
 
 // store rating in the database
-const storeRatingInDB = async (ratingData: TRating): Promise<TRating> => {
-  if (!ratingData.rating || !ratingData.userId || !ratingData.tourId) {
+const storeRatingInDB = async (ratingData: TRating, userId: string): Promise<TRating> => {
+  if (!ratingData.rating || !userId || !ratingData.tourId) {
     throw new BadRequestError('Rating, User ID, and Tour ID are required');
   }
 
   const result = await Rating.create({
-    ratingData
+    ...ratingData,
+    userId,
   });
 
   return result;
