@@ -7,7 +7,6 @@ This is a simple server for a tour and travel application built with Node.js and
 * User authentication and authorization
 * CRUD operations for tours and travelers
 * Filtering and sorting of tours
-* Support for multiple languages
 
 ## Installation
 
@@ -20,7 +19,7 @@ This is a simple server for a tour and travel application built with Node.js and
 
 ### Users
 
-* `POST /users` - Create a new user
+* `POST /users/create-user` - Create a new user
 * `GET /users` - Get a list of all users
 * `GET /users/:id` - Get a user by ID
 * `PUT /users/:id` - Update a user
@@ -28,54 +27,18 @@ This is a simple server for a tour and travel application built with Node.js and
 
 ### Tours
 
-* `POST /tours` - Create a new tour
+* `POST /tours/create-tour` - Create a new tour
 * `GET /tours` - Get a list of all tours
 * `GET /tours/:id` - Get a tour by ID
 * `PUT /tours/:id` - Update a tour
 * `DELETE /tours/:id` - Delete a tour
 
-### Travelers
+### Ratings
 
-* `POST /travelers` - Create a new traveler
-* `GET /travelers` - Get a list of all travelers
-* `GET /travelers/:id` - Get a traveler by ID
-* `PUT /travelers/:id` - Update a traveler
-* `DELETE /travelers/:id` - Delete a traveler
+* `POST /ratings/create-rating` - Create a new rating
+* `GET /ratings` - Get a list of all ratings
+* `GET /ratings/:id` - Get a rating by ID
+* `PUT /ratings/:id` - Update a rating
+* `DELETE /ratings/:id` - Delete a rating
 
-## Request Body
-
-The request body should be a JSON object with the following properties:
-
-* `name`: The name of the user, tour, or traveler
-* `email`: The email address of the user
-* `password`: The password of the user (only for users)
-* `description`: The description of the tour or traveler
-* `price`: The price of the tour (only for tours)
-* `duration`: The duration of the tour (only for tours)
-* `language`: The language of the tour (only for tours)
-
-## Response
-
-The response will be a JSON object with the following properties:
-
-* `id`: The ID of the user, tour, or traveler
-* `name`: The name of the user, tour, or traveler
-* `email`: The email address of the user
-* `description`: The description of the tour or traveler
-* `price`: The price of the tour (only for tours)
-* `duration`: The duration of the tour (only for tours)
-* `language`: The language of the tour (only for tours)
-
-## Authentication
-
-The server uses JSON Web Tokens (JWT) for authentication. To authenticate, send a `POST` request to the `/login` endpoint with a JSON object containing the user's email and password. The response will contain a JWT token that can be used to authenticate future requests.
-
-## Authorization
-
-The server uses role-based access control (RBAC) for authorization. The following roles are available:
-
-* `admin`: Can perform any action on any endpoint
-* `user`: Can perform read-only actions on any endpoint
-* `traveler`: Can perform read-only actions on the `/travelers` endpoint
-
-To authorize a request, include an `Authorization` header with a valid JWT token. The server will verify the token and check the user's role before allowing the request to proceed.
+### Request Body 
