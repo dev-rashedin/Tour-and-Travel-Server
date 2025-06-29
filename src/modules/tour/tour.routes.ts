@@ -1,4 +1,3 @@
-import { get } from "http";
 import { tourController } from "./tour.controller";
 
 const express = require('express');

@@ -5,6 +5,7 @@ import notFoundMiddleware from './middleware/not-found';
 import errorHandlerMiddleware from './middleware/error-handler';
 import userRouter from './modules/user/user.routes';
 import tourRouter from './modules/tour/tour.routes';
+import ratingRouter from './modules/rating/rating.routes';
 
 
 // initialize express application
@@ -18,6 +19,7 @@ app.use(cors())
 // Routes
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/tours', tourRouter) 
+app.use('/api/v1/ratings', ratingRouter) // Importing rating routes
 
 
 // Home route
