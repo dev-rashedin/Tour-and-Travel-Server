@@ -6,10 +6,10 @@ const express = require('express');
 
 const tourRouter = express.Router();
 
-tourRouter.get('/tours', tourController.getAllTours);
-tourRouter.get('/tours/:tourId', tourController.getSingleTour);
-tourRouter.post('/tours/create-tour', tourController.createTour);
-tourRouter.put('/tours/:tourId', tourController.updateTour);
-tourRouter.delete('/tours/:tourId', tourController.deleteTour);
+tourRouter.get('/', tourController.getAllTours);
+tourRouter.get('/:tourId', tourController.getSingleTour);
+tourRouter.post('/create-tour', tourController.createTour);
+tourRouter.put('/:tourId', tourController.updateTour);
+tourRouter.delete('/:tourId', tourController.deleteTour);
 
-export default tourRouter;
+export default tourRouter; 
