@@ -1,6 +1,12 @@
 import { Request, Response } from 'express';
 import asyncHandler from '../../utils/asyncHandler';
-import { StatusCodes } from '../../constants/httpStatus';
+// import { StatusCodes } from '../../constants/httpStatus';
+import {
+  StatusCodes,
+  StatusMessages,
+  DetailedStatusMessages,
+  getStatusMessage,
+} from 'http-status-toolkit-beta';
 import User from './user.model';
 import {
   deleteUserFromDB,
@@ -10,6 +16,11 @@ import {
   UpdateUserInDB,
 } from './user.service';
 
+console.log(StatusCodes.OK)
+
+
+
+
 export const getAllUser = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     // Logic to get all users
@@ -18,7 +29,7 @@ export const getAllUser = asyncHandler(
 
     res.status(StatusCodes.OK).json({
       success: true,
-      message: 'Users fetched successfully',
+      message: getStatusMessage(StatusCodes.OK, 'detailed'),
       details: {
         count: result.length,
         users: result,
