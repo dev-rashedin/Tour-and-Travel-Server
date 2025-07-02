@@ -2,8 +2,7 @@ import { Request, Response } from 'express';
 import asyncHandler from '../../utils/asyncHandler';
 import { BadRequestError } from '../../error';
 import ratingServices from './rating.services';
-import { StatusCodes } from '../../constants/httpStatus';
-import { get } from 'http';
+import { StatusCodes } from 'http-status-toolkit';
 
 const createRating = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
@@ -81,9 +80,9 @@ const updateRatingById = asyncHandler(
 
 // deleting a rating by ID
 const deleteRatingById = asyncHandler(
-  async (req: Request, res: Response): Promise<void> => { 
+  async (req: Request, res: Response): Promise<void> => {
     const ratingId = req.params.id;
-    const result = await ratingServices.deleteRatingByIdFromDB(ratingId); 
+    const result = await ratingServices.deleteRatingByIdFromDB(ratingId);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -91,9 +90,9 @@ const deleteRatingById = asyncHandler(
       details: {
         data: result,
       },
-    })
-  }
-)
+    });
+  },
+);
 
 export const ratingController = {
   createRating,

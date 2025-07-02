@@ -1,13 +1,9 @@
 import { Request, Response } from 'express';
 import asyncHandler from '../../utils/asyncHandler';
-// import { StatusCodes } from '../../constants/httpStatus';
 import {
   StatusCodes,
-  StatusMessages,
-  DetailedStatusMessages,
   getStatusMessage,
-} from 'http-status-toolkit-beta';
-import User from './user.model';
+} from 'http-status-toolkit';
 import {
   deleteUserFromDB,
   fetchAllUsersFromDB,

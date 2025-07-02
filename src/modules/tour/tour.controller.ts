@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import asyncHandler from '../../utils/asyncHandler';
 import { tourService } from './tour.service';
-import { StatusCodes } from '../../constants/httpStatus';
+import { StatusCodes } from 'http-status-toolkit';
 
 const createTour = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
@@ -32,11 +32,10 @@ const getAllTours = asyncHandler(
   },
 );
 
-
 const getSingleTour = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     const tourId = req.params.tourId;
-    const result = await tourService.fetchSingleTourFromDB(tourId);    
+    const result = await tourService.fetchSingleTourFromDB(tourId);
     res.status(StatusCodes.OK).json({
       success: true,
       message: `Tour with ID ${tourId} fetched successfully`,
@@ -44,7 +43,7 @@ const getSingleTour = asyncHandler(
         tour: result,
       },
     });
-  }
+  },
 );
 
 const updateTour = asyncHandler(
@@ -59,7 +58,7 @@ const updateTour = asyncHandler(
         tour: result,
       },
     });
-  }
+  },
 );
 
 const deleteTour = asyncHandler(
@@ -73,13 +72,13 @@ const deleteTour = asyncHandler(
         tour: result,
       },
     });
-  }
-);  
+  },
+);
 
 export const tourController = {
   createTour,
   getAllTours,
   getSingleTour,
   updateTour,
-  deleteTour
-}
+  deleteTour,
+};
