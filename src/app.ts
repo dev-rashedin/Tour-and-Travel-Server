@@ -1,11 +1,11 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 
-import notFoundMiddleware from './middleware/not-found';
-import errorHandlerMiddleware from './middleware/error-handler';
 import userRouter from './modules/user/user.routes';
 import tourRouter from './modules/tour/tour.routes';
 import ratingRouter from './modules/rating/rating.routes';
+import { globalErrorHandler, notFoundHandler } from 'express-error-toolkit';
+import notFoundMiddleware from './middleware/not-found';
 
 
 // initialize express application
@@ -36,7 +36,10 @@ app.get('/', (req: Request, res: Response) => {
 
 // Error handling middleware
 app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
+
+// app.use(notFoundHandler)
+app.use(globalErrorHandler)
 
 
 export default app;

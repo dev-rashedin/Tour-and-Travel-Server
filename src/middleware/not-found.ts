@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { StatusCodes } from '../constants/httpStatus';
+import { StatusCodes } from 'express-error-toolkit';
 
 
 
