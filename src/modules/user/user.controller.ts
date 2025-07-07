@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import {asyncHandler, CustomAPIError} from 'express-error-toolkit';
+import {asyncHandler} from 'express-error-toolkit';
 import {
   StatusCodes,
   getStatusMessage,

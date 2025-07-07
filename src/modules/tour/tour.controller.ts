@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-import asyncHandler from '../../utils/asyncHandler';
 import { tourService } from './tour.service';
-import { StatusCodes } from 'http-status-toolkit';
+import { StatusCodes, asyncHandler } from 'express-error-toolkit';
 
 const createTour = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {

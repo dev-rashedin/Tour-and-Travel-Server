@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import asyncHandler from '../../utils/asyncHandler';
 import { BadRequestError } from '../../error';
 import ratingServices from './rating.services';
-import { StatusCodes } from 'http-status-toolkit';
+import { StatusCodes, asyncHandler } from 'express-error-toolkit';
 
 const createRating = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
