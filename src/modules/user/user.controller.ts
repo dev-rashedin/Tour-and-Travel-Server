@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import asyncHandler from '../../utils/asyncHandler';
+import {asyncHandler, CustomAPIError} from 'express-error-toolkit';
 import {
   StatusCodes,
   getStatusMessage,
@@ -12,14 +12,14 @@ import {
   UpdateUserInDB,
 } from './user.service';
 
-console.log(StatusCodes.OK)
-
 
 
 
 export const getAllUser = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     // Logic to get all users
+
+    // throw new CustomAPIError('Custom Error', StatusCodes.UNAUTHORIZED)
 
     const result = await fetchAllUsersFromDB();
 

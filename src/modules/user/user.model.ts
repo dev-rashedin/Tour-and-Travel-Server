@@ -57,14 +57,14 @@ photo: String, // Optional field, can be null
 // }) 
 
 // post middleware
-userSchema.post('find', function (docs, next) {
-  docs.forEach((doc : TUser) => {
-    // doc.name = doc.name.toUpperCase()
-   doc.name = doc.name.split(' ')[0]
-})
-  next();
+// userSchema.post('find', function (docs, next) {
+//   docs.forEach((doc : TUser) => {
+//     // doc.name = doc.name.toUpperCase()
+//    doc.name = doc.name.split(' ')[0]
+// })
+//   next();
   
-})
+// })
 
 const User = model<TUser>('User', userSchema)
 

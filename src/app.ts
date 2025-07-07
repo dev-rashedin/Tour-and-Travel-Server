@@ -4,8 +4,10 @@ import cors from 'cors';
 import userRouter from './modules/user/user.routes';
 import tourRouter from './modules/tour/tour.routes';
 import ratingRouter from './modules/rating/rating.routes';
-import { globalErrorHandler, notFoundHandler } from 'express-error-toolkit';
-import notFoundMiddleware from './middleware/not-found';
+import { globalErrorHandler, NotFoundError, notFoundHandler, UnauthenticatedError, StatusCodes, httpError } from 'express-error-toolkit';
+
+
+console.log('Status code in app',StatusCodes.UNAUTHORIZED)
 
 
 // initialize express application
@@ -33,12 +35,16 @@ app.get('/', (req: Request, res: Response) => {
   );
 });
 
+app.get('/error', (req: Request, res: Response) => {
 
-// Error handling middleware
-app.use(notFoundMiddleware)
-// app.use(errorHandlerMiddleware);
+  // throw new NotFoundError('This is a custom error');
+  // throw new UnauthenticatedError('This is a custom error');
+  throw httpError('This is a custom error', 599, 'hi error');
+})
 
-// app.use(notFoundHandler)
+
+
+app.use(notFoundHandler)
 app.use(globalErrorHandler)
 
 
