@@ -5,6 +5,9 @@ import userRouter from './modules/user/user.routes';
 import tourRouter from './modules/tour/tour.routes';
 import ratingRouter from './modules/rating/rating.routes';
 import { globalErrorHandler, NotFoundError, notFoundHandler, UnauthenticatedError, StatusCodes, httpError } from 'express-error-toolkit';
+import { show_stack } from './config';
+
+const showStack = show_stack
 
 
 console.log('Status code in app',StatusCodes.UNAUTHORIZED)

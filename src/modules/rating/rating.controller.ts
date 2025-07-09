@@ -6,7 +6,7 @@ import { StatusCodes, asyncHandler } from 'express-error-toolkit';
 const createRating = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     const ratingData = req.body;
-    const userId = req.userId;
+    const userId = req.params.userId;
 
     if (!userId || !ratingData) {
       throw new BadRequestError('User ID and rating data are required');
