@@ -1,16 +1,30 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config(  );
 
 import userRouter from './modules/user/user.routes';
 import tourRouter from './modules/tour/tour.routes';
 import ratingRouter from './modules/rating/rating.routes';
-import { globalErrorHandler, NotFoundError, notFoundHandler, UnauthenticatedError, StatusCodes, httpError } from 'express-error-toolkit';
-import { show_stack } from './config';
+import {
+  globalErrorHandler,
+  NotFoundError,
+  notFoundHandler,
+  UnauthenticatedError,
+  StatusCodes,
+  httpError,
+  CustomAPIError,
+  setErrorOptions,
+} from 'express-error-toolkit';
 
-const showStack = show_stack
+setErrorOptions({
+ 
+  logError: false
+})
+
+console.log('status codes checking',StatusCodes.UNAUTHORIZED)
 
 
-console.log('Status code in app',StatusCodes.UNAUTHORIZED)
 
 
 // initialize express application
@@ -31,7 +45,7 @@ app.use('/api/v1/ratings', ratingRouter) // Importing rating routes
 app.get('/', (req: Request, res: Response) => {
 
   // // This will be caught by the error handler middleware
-  // throw new CustomAPIError('This is a custom error', 500, 'hi error');
+  throw new CustomAPIError('This is a custom error', 500, 'hi error');
  
   res.send(
     '<h1 style="min-height: 100vh; display: flex; justify-content: center; align-items: center">Welcome to the Tour and Travel Server</h1>',
